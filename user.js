@@ -6,9 +6,11 @@ class User {
   }
   makeDeposit(amount) {
     this.accountBalance += amount;
+    return this;
   }
   makeWithdraw(amount) {
     this.accountBalance -= amount;
+    return this;
   }
   display() {
     console.log(
@@ -17,6 +19,7 @@ class User {
         "  ,and the Balance is: " +
         this.accountBalance
     );
+    return this;
   }
   transfer(amount, from, to) {
     from.accountBalance -= amount;
@@ -36,22 +39,25 @@ const user1 = new User("Rasha Zayed", "abc.gmail.com", 2000);
 const user2 = new User("Nuha Sadek", "fgh.outlook.com", 5000);
 const user3 = new User("Ahmed Adel", "mnk@gmail.com", 8000);
 
-user1.makeDeposit(1000);
-user1.makeDeposit(500);
-user1.makeDeposit(500);
-user1.makeWithdraw(800);
-user1.display();
+user1
+  .makeDeposit(1000)
+  .makeDeposit(500)
+  .makeDeposit(500)
+  .makeWithdraw(800)
+  .display();
 
-user2.makeDeposit(300);
-user2.makeDeposit(700);
-user2.makeWithdraw(100);
-user2.makeWithdraw(400);
-user2.display();
+user2
+  .makeDeposit(300)
+  .makeDeposit(700)
+  .makeWithdraw(100)
+  .makeWithdraw(400)
+  .display();
 
-user3.makeDeposit(2000);
-user3.makeWithdraw(500);
-user3.makeWithdraw(800);
-user3.makeWithdraw(200);
-user3.display();
+user3
+  .makeDeposit(2000)
+  .makeWithdraw(500)
+  .makeWithdraw(800)
+  .makeWithdraw(200)
+  .display();
 
 user1.transfer(500, user1, user3);
